@@ -89,7 +89,7 @@ class en_wikipedia_toolkit:
         DATA = R.json()
         CSRF_TOKEN = DATA['query']['tokens']['csrftoken']
 
-        summary_new="Edit in [[Python (programming language)|Python]] via [[Visual Studio Code]].// "+summary
+        summary_new="Edit via an opensourced program on https://github.com/BrandNewJimZhang/en_wikipedia_toolkit.// "+summary
 
         # Step 4: POST request to edit a page
         PARAMS_3 = {
