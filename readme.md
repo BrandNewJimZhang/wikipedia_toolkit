@@ -18,8 +18,14 @@ Clone the python file into your workspace and open a new file, write this code b
 import en_wikipedia_toolkit
 en_wikipedia_toolkit.en_wikipedia_toolkit().fetch_code(page)
 ```
-![Fig. 1. Taylor Swift article demo Taylor Swift条目截图](doc/Taylor Swift article pic.png)
-![Fig. 2. Taylor Swift code demo Taylor Swift条目源代码截图](doc/Taylor Swift code pic.png)
+Fig. 1. Taylor Swift article demo Taylor Swift条目截图
+
+<img src="https://github.com/BrandNewJimZhang/en_wikipedia_toolkit/blob/master/doc/Taylor%20Swift%20article%20pic.png" width="400" align=center>
+
+Fig. 2. Taylor Swift code demo Taylor Swift条目源代码截图
+
+<img src="https://github.com/BrandNewJimZhang/en_wikipedia_toolkit/blob/master/doc/Taylor%20Swift%20code%20pic.png" width="400" align=center>
+
 For example, if one want to fetch the code of the page "Taylor Swift" (an American singer) (with the article pic shown in Fig. 1 and Fig. 2), just run this code:
 
 举个例子，如果一个人想获取"Taylor Swift"（一位美国女歌手）条目（图1和图2分别显示了条目和源代码）的源代码，只需运行这段代码：
@@ -101,5 +107,11 @@ See, your editcount is also displayed.
 As for the result, the content has already been changed, shown in Fig. 3 and 4.
 
 内容已经改变了，已在图3和图4中显示出来。
-![Fig. 3. Page changed demo 条目被更改后截图](doc/userpage changed.png)
-![Fig. 4. Page history demo 条目编辑历史截图](doc/userpage history.png)
+
+Fig. 3. Page changed demo 条目被更改后截图
+
+<img src="https://github.com/BrandNewJimZhang/en_wikipedia_toolkit/blob/master/doc/userpage%20changed.png" width="400" align=center>
+
+Fig. 4. Page history demo 条目编辑历史截图
+
+<img src="https://github.com/BrandNewJimZhang/en_wikipedia_toolkit/blob/master/doc/userpage%20history.png" width="800" align=center>
