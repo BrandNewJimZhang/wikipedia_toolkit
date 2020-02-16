@@ -4,11 +4,19 @@ from bs4 import BeautifulSoup
 
 class en_wikipedia_toolkit:
     '''
+    params:
+    Username and password are the ones you input on Wikipedia.
+
     This toolkit is used to edit Wikipedia for an auto-confirmed user.
     I'm BrandNew Jim Zhang. Please contact me via:
     1. http://www.brandnewjimzhang.com
     2. https://en.wikipedia.org/wiki/User:BrandNew_Jim_Zhang
+    3. https://github.com/BrandNewJimZhang/en_wikipedia_toolkit
     '''
+    def __init__(self,username,password):
+        self.username=username
+        self.password=password
+        
     def fetch_code(self,page):
         '''
         Fetch the code of a page.
@@ -72,8 +80,8 @@ class en_wikipedia_toolkit:
         # Step 2: POST request to log in. 
         PARAMS_1 = {
             "action": "login",
-            "lgname": "username",
-            "lgpassword": "password",
+            "lgname": self.username,
+            "lgpassword": self.password,
             "lgtoken": LOGIN_TOKEN,
             "format": "json"
         }
@@ -103,7 +111,7 @@ class en_wikipedia_toolkit:
         }
         R = S.post(URL, data=PARAMS_3)
         DATA = R.json()
-
+        print(DATA)
         try:
             if DATA['edit']['result']=='Success':
                 print('Upload done. See the page on '+'https://en.wikipedia.org/w/index.php?title='+'_'.join(page.split()))
@@ -118,7 +126,6 @@ class en_wikipedia_toolkit:
         }
         R = S.post(URL, data=PARAMS_4)
         DATA = R.json()
-
         editcount=DATA["query"]["userinfo"]["editcount"]
         print('After uploading, your editcount is ',str(editcount),'.',sep='')
 
@@ -202,3 +209,29 @@ class spider:
         endtime = time.time()
         dtime = endtime - starttime
         print("All processes were done in %.3f second(s)." % dtime)
+
+    def pitchfork_album_review(self,url):
+        '''
+        Fetch the album review score and author from www.pitchfork.com.
+        '''
+        starttime = time.time()
+
+        r = requests.get(url)
+        r.encoding='utf-8'
+        soup=BeautifulSoup(r.text,'html.parser')
+        artist=soup.find('h2').get_text()
+        album=soup.find('h1').get_text()
+        author=soup.find_all(name='a', attrs={'class':'authors-detail__display-name'})[0].get_text()
+        date=soup.find('time').get('datetime')
+        score=soup.find_all(name='div', attrs={'class':"score-circle"})[0].get_text()
+
+        first,last=author.split()[0],author.split()[1]
+        date=time.strftime('%b %d, %Y', time.strptime(date,'%Y-%m-%dT%H:%M:%S'))
+        accessdate=time.strftime('%b %d, %Y', time.gmtime(time.time()))
+        final="|rev?=''[[Pitchfork (website)|Pitchfork]]''\n|rev?Score="+score+'/10<ref>{{cite web|url='+url+'|title='+artist+': '+album+'|first='+first+'|last='+last+'|date='+date+'|accessdate='+accessdate+'|publisher=[[Pitchfork (website)|Pitchfork]]}}</ref>'
+        print(final)
+
+        endtime = time.time()
+        dtime = endtime - starttime
+        print("All processes were done in %.3f second(s)." % dtime)
+        

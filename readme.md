@@ -1,4 +1,4 @@
-# en_wikipedia_toolkit
+# English Wikipedia Editing Toolkit 英文维基百科编写套件
 
 This is a toolkit for Wikipedia editors who wish to edit their pages easily.
 这个套件是写给那些想更快编写维基百科的人用的。
@@ -11,16 +11,25 @@ Then how to use the toolkit?
 
 ## Guideline 指南
 
+### Before the next procedure, remember to instantiate. 在进行下一步之前，记得进行实例化
+
+Clone the repository into your workspace and open a new file. At the beginning, one should instantiate by presenting his username and password like this:
+
+把该资料库放在工作区中，并在目录中开始一个新程序。在一开始，用户应当给出他的账户和密码以实例化。
+
+```py
+#login.py
+import en_wikipedia_toolkit
+login=en_wikipedia_toolkit.en_wikipedia_toolkit('BrandNew Jim Zhang','**********')
+```
+
 ### Fetch the source code of a page. 获取一个页面的源代码
 
-Clone the python file into your workspace and open a new file, write this code block into your new file:
-
-把这个文件放在工作区中，并在目录中开始一个新程序，在新程序中写入以下代码:
-
-```python
-#test.py
+```py
+#fetch_code_test.py
 import en_wikipedia_toolkit
-en_wikipedia_toolkit.en_wikipedia_toolkit().fetch_code(page)
+login=en_wikipedia_toolkit.en_wikipedia_toolkit(username,password)
+login.fetch_code(page)
 ```
 
 Fig. 1. Taylor Swift article demo Taylor Swift条目截图
@@ -36,7 +45,10 @@ For example, if one want to fetch the code of the page "Taylor Swift" (an Americ
 举个例子，如果一个人想获取"Taylor Swift"（一位美国女歌手）条目（图1和图2分别显示了条目和源代码）的源代码，只需运行这段代码：
 
 ```py
-en_wikipedia_toolkit.en_wikipedia_toolkit().fetch_code("Taylor Swift")
+#fetch_code_test.py
+import en_wikipedia_toolkit
+login=en_wikipedia_toolkit.en_wikipedia_toolkit(username,password)
+login.fetch_code("Taylor Swift")
 ```
 
 Then the result in console will go like this:
@@ -53,37 +65,19 @@ And the source code has already been stored in your workspace.
 
 ### Upload the source code into a page. 将源代码上传至条目中
 
-**You have to be an autoconfirmed user to ues this toolkit to upload your edition.**
+**You have to be an autoconfirmed user to use this toolkit to upload your edition.**
 
 **要上传编辑的话，你必须是一名自动确认用户。**
-
-Step 1. Set your username and password, like the way you do in web browser.
-第一步：配置维基账户名称和密码，像你在浏览器访问时一样。
-
-Open 'en_wikipedia_toolkit.py' in editor, jump to Line 75 and 76, set your 'lgname' as your login name and 'lgpassword' as your login password. Like this:
-
-在文本编辑器中打开'en_wikipedia_toolkit.py'，找到第75行和76行，将'lgname'设置为你的登录名，'lgpassword'设置为你的密码。像这样：
-
-```py
-"lgname": "BrandNew Jim Zhang",
-"lgpassword": "********",
-```
-
-Done.
-
-配置好了。
-
-Step 2. Upload the wikitext into wikipedia.
-第二步：将维基文本上传至维基百科。
 
 Now it's time to upload the wikitext into wikipedia server! Just run this code in the new file:
 
 是时候将维基文本上传至维基百科服务器中了！只需在新文件运行下面的代码：
 
 ```py
-#test.py
+#upload.py
 import en_wikipedia_toolkit
-en_wikipedia_toolkit.en_wikipedia_toolkit().upload(page,path,summary="",minor=False)
+login=en_wikipedia_toolkit.en_wikipedia_toolkit(username,password)
+login.upload(page,path,summary="",minor=False)
 ```
 
 As for the params and args, the doc says:
@@ -104,9 +98,10 @@ Now give an example for further explanation, in this example, I try to edit one 
 现在举个例子说得更清楚一点，在这个例子中，我试图更改我的的一个用户页，提交的代码是Taylor Swift页面的代码。
 
 ```py
-#test.py
+#upload.py
 import en_wikipedia_toolkit
-en_wikipedia_toolkit.en_wikipedia_toolkit().upload('User:BrandNew Jim Zhang','Taylor Swift.wikitext',summary="test",minor=True)
+login=en_wikipedia_toolkit.en_wikipedia_toolkit(username,password)
+login.upload('User:BrandNew Jim Zhang','Taylor Swift.wikitext',summary="test",minor=True)
 ```
 
 Then the result in console will go like this:
