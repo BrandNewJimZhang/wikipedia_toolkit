@@ -111,7 +111,6 @@ class en_wikipedia_toolkit:
         }
         R = S.post(URL, data=PARAMS_3)
         DATA = R.json()
-        print(DATA)
         try:
             if DATA['edit']['result']=='Success':
                 print('Upload done. See the page on '+'https://en.wikipedia.org/w/index.php?title='+'_'.join(page.split()))
