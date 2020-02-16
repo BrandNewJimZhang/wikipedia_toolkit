@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # en_wikipedia_toolkit
 
 This is a toolkit for Wikipedia editors who wish to edit their pages easily.

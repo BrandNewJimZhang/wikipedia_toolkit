@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import requests
 import time
 from bs4 import BeautifulSoup
@@ -72,8 +73,8 @@ class en_wikipedia_toolkit:
         # Step 2: POST request to log in. 
         PARAMS_1 = {
             "action": "login",
-            "lgname": "BrandNew Jim Zhang",
-            "lgpassword": "zhw20000810",
+            "lgname": "username",
+            "lgpassword": "password",
             "lgtoken": LOGIN_TOKEN,
             "format": "json"
         }
