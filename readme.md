@@ -6,11 +6,11 @@ This is a toolkit for Wikipedia editors who wish to edit their pages easily.
 Then how to use the toolkit?
 那么怎么用这个套件呢？
 
-## 1. Guideline for ``<class 'en_wikipedia_toolkit'>`` ``<class 'en_wikipedia_toolkit'>``的指南
+## 1. Guideline for ``<class 'wikipedia_toolkit'>`` ``<class 'wikipedia_toolkit'>``的指南
 
-``<class 'en_wikipedia_toolkit'>`` is used for basic operations on Wikipedia, including login, viewing code and editing.
+``<class 'wikipedia_toolkit'>`` is used for basic operations on Wikipedia, including login, viewing code and editing.
 
-``<class 'en_wikipedia_toolkit'>`` 用来执行维基百科一些基本的操作, 包括登录、查看源码和编辑。
+``<class 'wikipedia_toolkit'>`` 用来执行维基百科一些基本的操作, 包括登录、查看源码和编辑。
 
 ### Before the next procedure, remember to instantiate. 在进行下一步之前，记得进行实例化
 
@@ -20,26 +20,26 @@ Clone the repository into your workspace and open a new file. At the beginning, 
 
 ```py
 #login.py
-import en_wikipedia_toolkit
-login=en_wikipedia_toolkit.en_wikipedia_toolkit('zh','BrandNew Jim Zhang','**********')
+import wikipedia_toolkit
+login=wikipedia_toolkit.wikipedia_toolkit('zh','BrandNew Jim Zhang','**********')
 ```
 
 ### Fetch the source code of a page. 获取一个页面的源代码
 
 ```py
 #fetch_code_test.py
-import en_wikipedia_toolkit
-login=en_wikipedia_toolkit.en_wikipedia_toolkit(language,username,password)
+import wikipedia_toolkit
+login=wikipedia_toolkit.wikipedia_toolkit(language,username,password)
 login.fetch_code(page)
 ```
 
 Fig. 1. Taylor Swift article demo Taylor Swift条目截图
 
-<img src="https://github.com/BrandNewJimZhang/en_wikipedia_toolkit/blob/master/doc/Taylor%20Swift%20article%20pic.png" width="400" align=center>
+<img src="https://github.com/BrandNewJimZhang/wikipedia_toolkit/blob/master/doc/Taylor%20Swift%20article%20pic.png" width="400" align=center>
 
 Fig. 2. Taylor Swift code demo Taylor Swift条目源代码截图
 
-<img src="https://github.com/BrandNewJimZhang/en_wikipedia_toolkit/blob/master/doc/Taylor%20Swift%20code%20pic.png" width="400" align=center>
+<img src="https://github.com/BrandNewJimZhang/wikipedia_toolkit/blob/master/doc/Taylor%20Swift%20code%20pic.png" width="400" align=center>
 
 For example, if one want to fetch the code of the page "Taylor Swift" (an American singer) (with the article pic shown in Fig. 1 and Fig. 2), just run this code:
 
@@ -47,8 +47,8 @@ For example, if one want to fetch the code of the page "Taylor Swift" (an Americ
 
 ```py
 #fetch_code_test.py
-import en_wikipedia_toolkit
-login=en_wikipedia_toolkit.en_wikipedia_toolkit(language,username,password)
+import wikipedia_toolkit
+login=wikipedia_toolkit.wikipedia_toolkit(language,username,password)
 login.fetch_code("Taylor Swift")
 ```
 
@@ -76,8 +76,8 @@ Now it's time to upload the wikitext into wikipedia server! Just run this code i
 
 ```py
 #upload.py
-import en_wikipedia_toolkit
-login=en_wikipedia_toolkit.en_wikipedia_toolkit(language,username,password)
+import wikipedia_toolkit
+login=wikipedia_toolkit.wikipedia_toolkit(language,username,password)
 login.upload(page,path,summary="",minor=False)
 ```
 
@@ -100,8 +100,8 @@ Now give an example for further explanation, in this example, I try to edit one 
 
 ```py
 #upload.py
-import en_wikipedia_toolkit
-login=en_wikipedia_toolkit.en_wikipedia_toolkit(language,username,password)
+import wikipedia_toolkit
+login=wikipedia_toolkit.wikipedia_toolkit(language,username,password)
 login.upload('User:BrandNew Jim Zhang','Taylor Swift.wikitext',summary="test",minor=True)
 ```
 
@@ -125,11 +125,11 @@ As for the result, the content has already been changed, shown in Fig. 3 and 4.
 
 Fig. 3. Page changed demo 条目被更改后截图
 
-<img src="https://github.com/BrandNewJimZhang/en_wikipedia_toolkit/blob/master/doc/userpage%20changed.png" width="400" align=center>
+<img src="https://github.com/BrandNewJimZhang/wikipedia_toolkit/blob/master/doc/userpage%20changed.png" width="400" align=center>
 
 Fig. 4. Page history demo 条目编辑历史截图
 
-<img src="https://github.com/BrandNewJimZhang/en_wikipedia_toolkit/blob/master/doc/userpage%20history.png" width="800" align=center>
+<img src="https://github.com/BrandNewJimZhang/wikipedia_toolkit/blob/master/doc/userpage%20history.png" width="800" align=center>
 
 ## 2. Guideline for ``<class 'spider'>`` ``<class 'spider'>``的指南
 
@@ -139,18 +139,20 @@ As Wikipedia editors, we know it's necessary to use [Template:cite web](https://
 
 Fig. 5. Template:cite web displaying result Template:cite web 效果截图
 
-<img src="https://github.com/BrandNewJimZhang/en_wikipedia_toolkit/blob/master/doc/cite%20web%20pic.png" width="400" align=center>
+<img src="https://github.com/BrandNewJimZhang/wikipedia_toolkit/blob/master/doc/cite%20web%20pic.png" width="400" align=center>
 
 Fig. 6. Template:cite web source code demo
 Template:cite web 源代码截图
 
-<img src="https://github.com/BrandNewJimZhang/en_wikipedia_toolkit/blob/master/doc/cite%20web%20code%20pic.png" width="800" align=center>
+<img src="https://github.com/BrandNewJimZhang/wikipedia_toolkit/blob/master/doc/cite%20web%20code%20pic.png" width="800" align=center>
 
-``<class 'spider'>`` is a class containing various method for scratching webpage into cite web. It can automatically turn the page like Fig. 7 into the wikitext below, making your editing easier.
+``<class 'spider'>`` is a class containing various method for scraping webpage into cite web. It can automatically turn the page like Fig. 7 into the wikitext below for reference, making your editing easier.
+
+``<class 'spider'>``这个类包含多种方法，可以将不同网站上的信息转化为维基文本中的引用模式。这个类可以将图7里的新闻自动转化成下方的代码，让你的编辑变得更容易。
 
 Fig. 7. News from *billboard.com* *[美国《公告牌》杂志网站](https://www.billboard.com/)* 上的新闻截图
 
-<img src="https://github.com/BrandNewJimZhang/en_wikipedia_toolkit/blob/master/doc/billboard%20news.png" width="400" align=center>
+<img src="https://github.com/BrandNewJimZhang/wikipedia_toolkit/blob/master/doc/billboard%20news.png" width="800" align=center>
 
 The printed wikitext turns like this: 输出的维基文本如下：
 
@@ -160,43 +162,53 @@ The printed wikitext turns like this: 输出的维基文本如下：
 
 Now the websites contain *billboard.com*, *edm.com*, *pitchfork.com*. And *[pitchfork album review](https://pitchfork.com/reviews/albums/)* is under testing.
 
-### Scraping news from billboard.com into wikitext reference. 
+目前网站包括*billboard.com*、*edm.com*和*pitchfork.com*。[*Pitchfork*专辑评论](https://pitchfork.com/reviews/albums/)正在测试。
+
+### Scraping news from billboard.com into wikitext reference. 爬取 billboard.com 的内容以获取维基文本的引用形式
 
 Just run this code:
 
+只需运行以下代码：
+
 ```py
 #billboard_news.py
-import en_wikipedia_toolkit
-spider=en_wikipedia_toolkit.spider()
+import wikipedia_toolkit
+spider=wikipedia_toolkit.spider()
 spider.billboard(url)
 ```
 
-Take [this news about 2020 NBA All-Star Game](https://www.billboard.com/articles/news/8551162/common-tribute-chicago-kobe-bryant-2020-nba-all-star) for an example:
+Take [this news about 2020 NBA All-Star Game](https://www.billboard.com/articles/news/8551157/chance-the-rapper-2020-nba-all-star-game-halftime-show) for an example:
+
+举[这个有关2020年NBA全明星的新闻](https://www.billboard.com/articles/news/8551157/chance-the-rapper-2020-nba-all-star-game-halftime-show)作为例子：
 
 ```py
 #billboard_news.py
-import en_wikipedia_toolkit
-spider=en_wikipedia_toolkit.spider()
-spider.billboard('https://www.billboard.com/articles/news/8551162/common-tribute-chicago-kobe-bryant-2020-nba-all-star')
+import wikipedia_toolkit
+spider=wikipedia_toolkit.spider()
+spider.billboard('https://www.billboard.com/articles/news/8551157/chance-the-rapper-2020-nba-all-star-game-halftime-show')
 ```
 
 And the console will display:
 
+控制台会输出：
+
 ```text
-<ref>{{cite web|url=https://www.billboard.com/articles/news/8551162/common-tribute-chicago-kobe-bryant-2020-nba-all-star|title=Common Delivers Poetic Tribute to Chicago & Kobe Bryant at 2020 NBA All-Star Game|first=Billboard|last=Staff|date=Feb 16, 2020|accessdate=Feb 17, 2020|publisher=[[Billboard (magazine)|Billboard]]}}</ref>
-All processes were done in 7.810 second(s).
+<ref>{{cite web|url=https://www.billboard.com/articles/news/8551157/chance-the-rapper-2020-nba-all-star-game-halftime-show|title=Chance the Rapper Brings Out Special Guests, Pays Tribute to Kobe Bryant at 2020 NBA All-Star Game Halftime Show|first=Ashley|last=Iasimone|date=Feb 16, 2020|accessdate=Feb 17, 2020|publisher=[[Billboard (magazine)|Billboard]]}}</ref>
+All processes were done in 2.312 second(s).
 ```
 
-Wow, so easy.
+Wow, so easy. 哇，是不是很简单~
 
-### Scraping news from edm.com into wikitext reference.
+### Scraping news from edm.com into wikitext reference. 爬取 edm.com 的内容以获取维基文本的引用形式
 
 Like above and take [this news about Calvin Harris (Scottish DJ, my idol)](https://edm.com/music-releases/calvin-harris-love-regenerator-2) for an example:
 
+像上面一样，举[这个和Calvin Harris（苏格兰DJ，我的偶像）有关新闻](https://edm.com/music-releases/calvin-harris-love-regenerator-2)的例子：
+
 ```py
 #billboard_news.py
-import en_wikipedia_toolkit
-spider=en_wikipedia_toolkit.spider()
+import wikipedia_toolkit
+spider=wikipedia_toolkit.spider()
 spider.edm('https://edm.com/music-releases/calvin-harris-love-regenerator-2')
 ```
 
@@ -207,41 +219,57 @@ And the console will display:
 All processes were done in 3.000 second(s).
 ```
 
-### Scraping news from pitchfork.com into wikitext reference. 
-
-[Another news from pitchfork about Justin Bieber's (Canadian singer) new album *Changes*](https://pitchfork.com/news/listen-to-justin-biebers-new-album-changes/):
+### Scraping news from pitchfork.com into wikitext reference. 爬取 pitchfork.com 的内容以获取维基文本的引用形式
 
 ```py
 #billboard_news.py
-import en_wikipedia_toolkit
-spider=en_wikipedia_toolkit.spider()
+import wikipedia_toolkit
+spider=wikipedia_toolkit.spider()
+spider.pitchfork_news(url)
+```
+
+Another example, [news from pitchfork about Justin Bieber's (Canadian singer) new album *Changes*](https://pitchfork.com/news/listen-to-justin-biebers-new-album-changes/):
+
+下一个例子，[Pitchfork上一个和Justin Bieber（加拿大歌手）新专辑《Changes》有关的新闻](https://pitchfork.com/news/listen-to-justin-biebers-new-album-changes/)：
+
+```py
+#billboard_news.py
+import wikipedia_toolkit
+spider=wikipedia_toolkit.spider()
 spider.pitchfork_news('https://pitchfork.com/news/listen-to-justin-biebers-new-album-changes/')
 ```
 
 And the console will display:
+
+控制台会显示：
 
 ```text
 <ref>{{cite web|url=https://pitchfork.com/news/listen-to-justin-biebers-new-album-changes/|title=Listen to Justin Bieber’s New Album Changes|first=Madison|last=Bloom|date=Feb 14, 2020|accessdate=Feb 17, 2020|publisher=[[Pitchfork (website)|Pitchfork]]}}</ref>
 All processes were done in 33.274 second(s).
 ```
 
-### Scraping album scores from pitchfork.com.
+### Scraping album scores from pitchfork.com. 爬取 pitchfork.com 的专辑评分以获取维基文本的引用形式
 
 Pitchfork release album reviews irregularly like this:
 
+Pitchfork总是不定期放出些专辑评论，还有像这样的专辑分数：
+
 Fig. 8. [Pitchfork album review screenshot](https://pitchfork.com/reviews/albums/lil-wayne-funeral/)
 
-<img src="https://github.com/BrandNewJimZhang/en_wikipedia_toolkit/blob/master/doc/album%20review.png" width="400" align=center>
+<img src="https://github.com/BrandNewJimZhang/wikipedia_toolkit/blob/master/doc/album%20review.png" width="800" align=center>
 
 Fig. 9. Album review source code (Check it in [this page](https://en.wikipedia.org/wiki/Funeral_(Lil_Wayne_album)))
 
-<img src="https://github.com/BrandNewJimZhang/en_wikipedia_toolkit/blob/master/doc/album%20code.png" width="800" align=center>
+<img src="https://github.com/BrandNewJimZhang/wikipedia_toolkit/blob/master/doc/album%20code.png" width="800" align=center>
+
+Now let's have a try in this toolkit:
+
+那我们试试：
 
 ```py
 #album review.py
-Now let's have a try in this toolkit:
-import en_wikipedia_toolkit
-spider=en_wikipedia_toolkit.spider()
+import wikipedia_toolkit
+spider=wikipedia_toolkit.spider()
 spider.pitchfork_album_review('https://pitchfork.com/reviews/albums/lil-wayne-funeral/')
 ```
 
@@ -254,3 +282,5 @@ All processes were done in 7.000 second(s).
 ```
 
 Because it cannot be decided as 'rev4', I use 'rev?' instead. Remember to replace the '?' with according number.
+
+显然我们不能决定是'rev4'，我使用了'rev?'作为替代。记得在编辑时要把'?'换回来。

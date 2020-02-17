@@ -2,7 +2,7 @@ import requests
 import time
 from bs4 import BeautifulSoup
 
-class en_wikipedia_toolkit:
+class wikipedia_toolkit:
     '''
     params:
     Username and password are the ones you input on Wikipedia.
