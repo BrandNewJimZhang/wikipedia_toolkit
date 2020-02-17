@@ -13,7 +13,8 @@ class en_wikipedia_toolkit:
     2. https://en.wikipedia.org/wiki/User:BrandNew_Jim_Zhang
     3. https://github.com/BrandNewJimZhang/en_wikipedia_toolkit
     '''
-    def __init__(self,username,password):
+    def __init__(self,language,username,password):
+        self.language=language
         self.username=username
         self.password=password
         
@@ -23,7 +24,7 @@ class en_wikipedia_toolkit:
         '''
         starttime = time.time()
 
-        URL = "https://en.wikipedia.org/w/api.php"
+        URL = "https://"+self.language+".wikipedia.org/w/api.php"
         S = requests.Session()
 
         PARAM_code = {
@@ -41,6 +42,7 @@ class en_wikipedia_toolkit:
             text=DATA['query']['pages'][i]['revisions'][0]['slots']['main']['*']
         file=open(page+".wikitext",'w',encoding='utf-8')
         file.write(text)
+        file.close()
         print('Done. The source code was written in',"'"+page+".wikitext'.")
 
         endtime = time.time()
@@ -62,9 +64,10 @@ class en_wikipedia_toolkit:
 
         file=open(path,'r',encoding='utf-8')
         text=file.read()
+        file.close()
 
         S = requests.Session()
-        URL = "https://en.wikipedia.org/w/api.php"
+        URL = "https://"+self.language+".wikipedia.org/w/api.php"
 
         # Step 1: GET request to fetch login token
         PARAMS_0 = {
