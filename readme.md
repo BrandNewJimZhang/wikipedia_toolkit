@@ -162,7 +162,7 @@ The printed wikitext turns like this: 输出的维基文本如下：
 
 Now the websites contain *[billboard.com](https://www.billboard.com/)*, *[edm.com](https://edm.com)*, *[pitchfork.com](https://pitchfork.com)*. And *[pitchfork album review](https://pitchfork.com/reviews/albums/)* is under testing.
 
-目前网站包括*[billboard.com](https://www.billboard.com/)*、*[edm.com](https://edm.com)*和*[pitchfork.com](https://pitchfork.com)*。[*Pitchfork*专辑评论](https://pitchfork.com/reviews/albums/)正在测试。
+目前网站包括 *[billboard.com](https://www.billboard.com/)*、*[edm.com](https://edm.com)* 和 *[pitchfork.com](https://pitchfork.com)*。[*Pitchfork*专辑评论](https://pitchfork.com/reviews/albums/)正在测试。
 
 ### Scraping news from *[billboard.com](https://www.billboard.com/)* into wikitext reference. 爬取 *[billboard.com](https://www.billboard.com/)* 的内容以获取维基文本的引用形式
 
