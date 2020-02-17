@@ -6,9 +6,7 @@ This is a toolkit for Wikipedia editors who wish to edit their pages easily.
 Then how to use the toolkit?
 那么怎么用这个套件呢？
 
-## 1. Guideline for ``<class 'en_wikipedia_toolkit'>``
-
-## 1. ``<class 'en_wikipedia_toolkit'>``的指南
+## 1. Guideline for ``<class 'en_wikipedia_toolkit'>`` ``<class 'en_wikipedia_toolkit'>``的指南
 
 ``<class 'en_wikipedia_toolkit'>`` is used for basic operations on Wikipedia, including login, viewing code and editing.
 
@@ -133,9 +131,7 @@ Fig. 4. Page history demo 条目编辑历史截图
 
 <img src="https://github.com/BrandNewJimZhang/en_wikipedia_toolkit/blob/master/doc/userpage%20history.png" width="800" align=center>
 
-## 2. Guideline for ``<class 'spider'>``
-
-## 2. ``<class 'spider'>``的指南
+## 2. Guideline for ``<class 'spider'>`` ``<class 'spider'>``的指南
 
 As Wikipedia editors, we know it's necessary to use [Template:cite web](https://en.wikipedia.org/wiki/Template:Cite_web) to cite web contents like this:
 
@@ -152,7 +148,7 @@ Template:cite web 源代码截图
 
 ``<class 'spider'>`` is a class containing various method for scratching webpage into cite web. It can automatically turn the page like Fig. 7 into the wikitext below, making your editing easier.
 
-Fig. 7. News from *[Billboard.com](https://www.billboard.com/)* *[美国《公告牌》杂志网站](https://www.billboard.com/)* 上的新闻截图
+Fig. 7. News from *billboard.com* *[美国《公告牌》杂志网站](https://www.billboard.com/)* 上的新闻截图
 
 <img src="https://github.com/BrandNewJimZhang/en_wikipedia_toolkit/blob/master/doc/billboard%20news.png" width="400" align=center>
 
@@ -161,3 +157,100 @@ The printed wikitext turns like this: 输出的维基文本如下：
 ```wikitext
 <ref>{{cite web|url=https://www.billboard.com/articles/business/chart-beat/8551159/justin-bieber-changes-billboard-200-debut-forecast|title=Justin Bieber's 'Changes' Album Set for No. 1 Debut on Billboard 200 Chart|first=Keith|last=Caulfield|date=Feb 16, 2020|accessdate=Feb 17, 2020|publisher=[[Billboard (magazine)|Billboard]]}}</ref>
 ```
+
+Now the websites contain *billboard.com*, *edm.com*, *pitchfork.com*. And *[pitchfork album review](https://pitchfork.com/reviews/albums/)* is under testing.
+
+### Scraping news from billboard.com into wikitext reference. 
+
+Just run this code:
+
+```py
+#billboard_news.py
+import en_wikipedia_toolkit
+spider=en_wikipedia_toolkit.spider()
+spider.billboard(url)
+```
+
+Take [this news about 2020 NBA All-Star Game](https://www.billboard.com/articles/news/8551162/common-tribute-chicago-kobe-bryant-2020-nba-all-star) for an example:
+
+```py
+#billboard_news.py
+import en_wikipedia_toolkit
+spider=en_wikipedia_toolkit.spider()
+spider.billboard('https://www.billboard.com/articles/news/8551162/common-tribute-chicago-kobe-bryant-2020-nba-all-star')
+```
+
+And the console will display:
+
+```text
+<ref>{{cite web|url=https://www.billboard.com/articles/news/8551162/common-tribute-chicago-kobe-bryant-2020-nba-all-star|title=Common Delivers Poetic Tribute to Chicago & Kobe Bryant at 2020 NBA All-Star Game|first=Billboard|last=Staff|date=Feb 16, 2020|accessdate=Feb 17, 2020|publisher=[[Billboard (magazine)|Billboard]]}}</ref>
+All processes were done in 7.810 second(s).
+```
+
+Wow, so easy.
+
+### Scraping news from edm.com into wikitext reference.
+
+Like above and take [this news about Calvin Harris (Scottish DJ, my idol)](https://edm.com/music-releases/calvin-harris-love-regenerator-2) for an example:
+
+```py
+#billboard_news.py
+import en_wikipedia_toolkit
+spider=en_wikipedia_toolkit.spider()
+spider.edm('https://edm.com/music-releases/calvin-harris-love-regenerator-2')
+```
+
+And the console will display:
+
+```text
+<ref>{{cite web|url=https://edm.com/music-releases/calvin-harris-love-regenerator-2|title=Calvin Harris Drops 2 More Love Regenerator Tracks for Valentine's Day|first=John|last=Cameron|date=Feb 14, 2020|accessdate=Feb 17, 2020|website=edm.com}}</ref>
+All processes were done in 3.000 second(s).
+```
+
+### Scraping news from pitchfork.com into wikitext reference. 
+
+[Another news from pitchfork about Justin Bieber's (Canadian singer) new album *Changes*](https://pitchfork.com/news/listen-to-justin-biebers-new-album-changes/):
+
+```py
+#billboard_news.py
+import en_wikipedia_toolkit
+spider=en_wikipedia_toolkit.spider()
+spider.pitchfork_news('https://pitchfork.com/news/listen-to-justin-biebers-new-album-changes/')
+```
+
+And the console will display:
+
+```text
+<ref>{{cite web|url=https://pitchfork.com/news/listen-to-justin-biebers-new-album-changes/|title=Listen to Justin Bieber’s New Album Changes|first=Madison|last=Bloom|date=Feb 14, 2020|accessdate=Feb 17, 2020|publisher=[[Pitchfork (website)|Pitchfork]]}}</ref>
+All processes were done in 33.274 second(s).
+```
+
+### Scraping album scores from pitchfork.com.
+
+Pitchfork release album reviews irregularly like this:
+
+Fig. 8. [Pitchfork album review screenshot](https://pitchfork.com/reviews/albums/lil-wayne-funeral/)
+
+<img src="https://github.com/BrandNewJimZhang/en_wikipedia_toolkit/blob/master/doc/album%20review.png" width="400" align=center>
+
+Fig. 9. Album review source code (Check it in [this page](https://en.wikipedia.org/wiki/Funeral_(Lil_Wayne_album)))
+
+<img src="https://github.com/BrandNewJimZhang/en_wikipedia_toolkit/blob/master/doc/album%20code.png" width="800" align=center>
+
+```py
+#album review.py
+Now let's have a try in this toolkit:
+import en_wikipedia_toolkit
+spider=en_wikipedia_toolkit.spider()
+spider.pitchfork_album_review('https://pitchfork.com/reviews/albums/lil-wayne-funeral/')
+```
+
+And the console will display:
+
+```text
+|rev?=''[[Pitchfork (website)|Pitchfork]]''
+|rev?Score=7.3/10<ref>{{cite web|url=https://pitchfork.com/reviews/albums/lil-wayne-funeral/|title=Lil Wayne: Funeral|first=Sheldon|last=Pearce|date=Feb 04, 2020|accessdate=Feb 17, 2020|publisher=[[Pitchfork (website)|Pitchfork]]}}</ref>
+All processes were done in 7.000 second(s).
+```
+
+Because it cannot be decided as 'rev4', I use 'rev?' instead. Remember to replace the '?' with according number.
