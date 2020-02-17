@@ -133,9 +133,9 @@ Fig. 4. Page history demo 条目编辑历史截图
 
 ## 2. Guideline for ``<class 'spider'>`` ``<class 'spider'>``的指南
 
-As Wikipedia editors, we know it's necessary to use [Template:cite web](https://en.wikipedia.org/wiki/Template:Cite_web) to cite web contents like this:
+As Wikipedia editors, we know it's necessary to use [Template:Cite web](https://en.wikipedia.org/wiki/Template:Cite_web) to cite web contents like this:
 
-作为维基百科编者，我们知道使用[Template:cite web](https://en.wikipedia.org/wiki/Template:Cite_web)这一模板来引用网页里的内容是很重要的。如下所示：
+作为维基百科编者，我们知道使用[Template:Cite web](https://en.wikipedia.org/wiki/Template:Cite_web)这一模板来引用网页里的内容是很重要的。如下所示：
 
 Fig. 5. Template:cite web displaying result Template:cite web 效果截图
 
@@ -150,7 +150,7 @@ Template:cite web 源代码截图
 
 ``<class 'spider'>``这个类包含多种方法，可以将不同网站上的信息转化为维基文本中的引用模式。这个类可以将图7里的新闻自动转化成下方的代码，让你的编辑变得更容易。
 
-Fig. 7. News from *billboard.com* *[美国《公告牌》杂志网站](https://www.billboard.com/)* 上的新闻截图
+Fig. 7. News from *[billboard.com](https://www.billboard.com/)* *[美国《公告牌》杂志网站](https://www.billboard.com/)* 上的新闻截图
 
 <img src="https://github.com/BrandNewJimZhang/wikipedia_toolkit/blob/master/doc/billboard%20news.png" width="800" align=center>
 
@@ -160,11 +160,11 @@ The printed wikitext turns like this: 输出的维基文本如下：
 <ref>{{cite web|url=https://www.billboard.com/articles/business/chart-beat/8551159/justin-bieber-changes-billboard-200-debut-forecast|title=Justin Bieber's 'Changes' Album Set for No. 1 Debut on Billboard 200 Chart|first=Keith|last=Caulfield|date=Feb 16, 2020|accessdate=Feb 17, 2020|publisher=[[Billboard (magazine)|Billboard]]}}</ref>
 ```
 
-Now the websites contain *billboard.com*, *edm.com*, *pitchfork.com*. And *[pitchfork album review](https://pitchfork.com/reviews/albums/)* is under testing.
+Now the websites contain *[billboard.com](https://www.billboard.com/)*, *[edm.com](https://edm.com)*, *[pitchfork.com](https://pitchfork.com)*. And *[pitchfork album review](https://pitchfork.com/reviews/albums/)* is under testing.
 
-目前网站包括*billboard.com*、*edm.com*和*pitchfork.com*。[*Pitchfork*专辑评论](https://pitchfork.com/reviews/albums/)正在测试。
+目前网站包括*[billboard.com](https://www.billboard.com/)*、*[edm.com](https://edm.com)*和*[pitchfork.com](https://pitchfork.com)*。[*Pitchfork*专辑评论](https://pitchfork.com/reviews/albums/)正在测试。
 
-### Scraping news from billboard.com into wikitext reference. 爬取 billboard.com 的内容以获取维基文本的引用形式
+### Scraping news from *[billboard.com](https://www.billboard.com/)* into wikitext reference. 爬取 *[billboard.com](https://www.billboard.com/)* 的内容以获取维基文本的引用形式
 
 Just run this code:
 
@@ -199,7 +199,7 @@ All processes were done in 2.312 second(s).
 
 Wow, so easy. 哇，是不是很简单~
 
-### Scraping news from edm.com into wikitext reference. 爬取 edm.com 的内容以获取维基文本的引用形式
+### Scraping news from *[edm.com](https://edm.com)* into wikitext reference. 爬取 *[edm.com](https://edm.com)* 的内容以获取维基文本的引用形式
 
 Like above and take [this news about Calvin Harris (Scottish DJ, my idol)](https://edm.com/music-releases/calvin-harris-love-regenerator-2) for an example:
 
@@ -219,7 +219,7 @@ And the console will display:
 All processes were done in 3.000 second(s).
 ```
 
-### Scraping news from pitchfork.com into wikitext reference. 爬取 pitchfork.com 的内容以获取维基文本的引用形式
+### Scraping news from *[pitchfork.com](https://pitchfork.com)* into wikitext reference. 爬取 *[pitchfork.com](https://pitchfork.com)* 的内容以获取维基文本的引用形式
 
 ```py
 #billboard_news.py
@@ -248,7 +248,7 @@ And the console will display:
 All processes were done in 33.274 second(s).
 ```
 
-### Scraping album scores from pitchfork.com. 爬取 pitchfork.com 的专辑评分以获取维基文本的引用形式
+### Scraping album scores from *[pitchfork.com](https://pitchfork.com)* 爬取 *[pitchfork.com](https://pitchfork.com)* 的专辑评分以获取维基文本的引用形式
 
 Pitchfork release album reviews irregularly like this:
 
@@ -274,6 +274,8 @@ spider.pitchfork_album_review('https://pitchfork.com/reviews/albums/lil-wayne-fu
 ```
 
 And the console will display:
+
+控制台会显示：
 
 ```text
 |rev?=''[[Pitchfork (website)|Pitchfork]]''
