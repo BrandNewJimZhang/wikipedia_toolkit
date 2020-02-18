@@ -100,7 +100,7 @@ class wikipedia_toolkit:
         DATA = R.json()
         CSRF_TOKEN = DATA['query']['tokens']['csrftoken']
 
-        summary_new="Edit via an opensourced program on [GitHub https://github.com/BrandNewJimZhang/en_wikipedia_toolkit].// "+summary
+        summary_new="Edit via an opensourced program on [GitHub https://github.com/BrandNewJimZhang/wikipedia_toolkit].// "+summary
 
         # Step 4: POST request to edit a page
         PARAMS_3 = {
