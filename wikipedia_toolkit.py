@@ -158,10 +158,14 @@ class spider:
             author=soup.select('#main > main > section.main-well.js-mainWell > article > div.article__details > p.article__meta.article__meta--below-media > span.js-authors-list > span > a')[0].get_text().strip()
         except:
             author=soup.select('#main > main > section.main-well.js-mainWell > article > div.article__header > p.article__meta > span.js-authors-list > span > a')[0].get_text().strip()
-        first,last=author.split()[0],author.split()[1]
         date=time.strftime('%b %d, %Y', time.strptime(date,'%m/%d/%Y'))
         accessdate=time.strftime('%b %d, %Y', time.gmtime(time.time()))
-        final='<ref>{{cite web|url='+url+'|title='+title+'|first='+first+'|last='+last+'|date='+date+'|accessdate='+accessdate+'|publisher=[[Billboard (magazine)|Billboard]]}}</ref>'
+        if author in ['Associated Press', 'Billboard Staff']:
+            authortext='|author='+author
+        else:
+            first,last=author.split()[0],author.split()[1]
+            authortext='|first='+first+'|last='+last
+        final='<ref>{{cite web|url='+url+'|title='+title+authortext+'|date='+date+'|accessdate='+accessdate+'|publisher=[[Billboard (magazine)|Billboard]]}}</ref>'
         print(final)
 
         endtime = time.time()
@@ -180,10 +184,16 @@ class spider:
         title=soup.select('#lyra-wrapper > div > div.m-advertisement-off-canvas--pusher > section > div.m-page.m-detail.mm-detail.mm-feature > section.m-component-detail > article > div > header > div > div > h1')[0].get_text()
         author=soup.select('#lyra-wrapper > div > div.m-advertisement-off-canvas--pusher > section > div.m-page.m-detail.mm-detail.mm-feature > section.m-component-detail > article > div > header > div > div > div.m-detail-header--meta > dl > dd:nth-child(2) > a')[0].get_text()
         date=soup.find('time').get('title')
-        first,last=author.split()[0],author.split()[1]
         date=time.strftime('%b %d, %Y', time.strptime(date,'%Y-%m-%dT%H:%M:%SZ'))
         accessdate=time.strftime('%b %d, %Y', time.gmtime(time.time()))        
-        final='<ref>{{cite web|url='+url+'|title='+title+'|first='+first+'|last='+last+'|date='+date+'|accessdate='+accessdate+'|website=edm.com}}</ref>'
+
+        if author in ['Ethan M. Baer', 'EDM.com Staff']:
+            authortext='|author='+author
+        else:
+            first,last=author.split()[0],author.split()[1]
+            authortext='|first='+first+'|last='+last
+        final='<ref>{{cite web|url='+url+'|title='+title+authortext+'|date='+date+'|accessdate='+accessdate+'|website=edm.com}}</ref>'
+
         print(final)
 
         endtime = time.time()
