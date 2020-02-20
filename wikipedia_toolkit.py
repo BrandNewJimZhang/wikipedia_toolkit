@@ -116,7 +116,7 @@ class wikipedia_toolkit:
         DATA = R.json()
         try:
             if DATA['edit']['result']=='Success':
-                print('Upload done. See the page on '+'https://en.wikipedia.org/w/index.php?title='+'_'.join(page.split()))
+                print('Upload done. See the page on '+'https://'+self.language+'.wikipedia.org/w/index.php?title='+'_'.join(page.split()))
         except:
             print('Oh shit!')
 
@@ -240,7 +240,7 @@ class spider:
         first,last=author.split()[0],author.split()[1]
         date=time.strftime('%b %d, %Y', time.strptime(date,'%Y-%m-%dT%H:%M:%S'))
         accessdate=time.strftime('%b %d, %Y', time.gmtime(time.time()))
-        final="|rev?=''[[Pitchfork (website)|Pitchfork]]''\n|rev?Score="+score+'/10<ref>{{cite web|url='+url+'|title='+artist+': '+album+'|first='+first+'|last='+last+'|date='+date+'|accessdate='+accessdate+'|publisher=[[Pitchfork (website)|Pitchfork]]}}</ref>'
+        final="| rev? = ''[[Pitchfork (website)|Pitchfork]]''\n| rev?Score = "+score+'/10<ref>{{cite web|url='+url+'|title='+artist+': '+album+'|first='+first+'|last='+last+'|date='+date+'|accessdate='+accessdate+'|publisher=[[Pitchfork (website)|Pitchfork]]}}</ref>'
         print(final)
 
         endtime = time.time()
