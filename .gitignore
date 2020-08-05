@@ -1,0 +1,11 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# wikitext
+*.wikitext
+
+# under testing files
+test.py
+riaa.py
+spider for wiki.py

@@ -1,5 +1,6 @@
 import requests
 import time
+import dateutil
 from bs4 import BeautifulSoup
 
 class wikipedia_toolkit:
@@ -9,7 +10,7 @@ class wikipedia_toolkit:
 
     This toolkit is used to edit Wikipedia for an auto-confirmed user.
     I'm BrandNew Jim Zhang. Please contact me via:
-    1. http://www.brandnewjimzhang.com
+    1. https://www.brandnewjimzhang.com
     2. https://en.wikipedia.org/wiki/User:BrandNew_Jim_Zhang
     3. https://github.com/BrandNewJimZhang/en_wikipedia_toolkit
     '''
@@ -40,7 +41,12 @@ class wikipedia_toolkit:
         #Can be used only for one page.
         for i in DATA['query']['pages'].keys():
             text=DATA['query']['pages'][i]['revisions'][0]['slots']['main']['*']
-        file=open(page+".wikitext",'w',encoding='utf-8')
+            
+        if ':' in page:
+            path=page[:page.find(":")]+".wikitext"
+        else:
+            path=page+".wikitext"
+        file=open(path,'w',encoding='utf-8')
         file.write(text)
         file.close()
         print('Done. The source code was written in',"'"+page+".wikitext'.")
